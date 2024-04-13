@@ -1,1 +1,1 @@
-# rom-Zero-to-Hero-Deploying-a-Full-Stack-AWS-Architecture-Using-Terraform
+# Zero-to-Hero-Deploying-a-Full-Stack-AWS-Architecture-Using-Terraform
