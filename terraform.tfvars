@@ -67,14 +67,17 @@ ec2_sg_egress_rules = {
   }
 }
 rds_conf = {
-  instance_class    = "db.t3.xlarge"
-  engine            = "mysql"
-  engine_version    = "8.0.20"
-  allocated_storage = 20
-  storage_type      = "gp2"
-  multi_az          = true
-  username          = "admin"
-  db_name           = "mydb"
+  instance_class          = "db.t3.xlarge"
+  engine                  = "mysql"
+  engine_version          = "8.0.20"
+  allocated_storage       = 20
+  storage_type            = "gp2"
+  multi_az                = true
+  username                = "admin"
+  db_name                 = "mydb"
+  storage_encrypted       = true
+  publicly_accessible     = false
+  backup_retention_period = 7
 }
 rds_sg_ingress_rules = {
   https = {
