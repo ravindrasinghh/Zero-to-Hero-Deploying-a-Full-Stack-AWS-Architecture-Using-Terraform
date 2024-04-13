@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
   pull_request:
     branches: 
-      - main 
+      - master
   push:
     branches:
      - feature/*
-     - main
+     - master
     paths:
       - '*/**'
 permissions:
