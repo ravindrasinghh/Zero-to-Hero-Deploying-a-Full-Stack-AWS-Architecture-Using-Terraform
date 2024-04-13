@@ -1,0 +1,56 @@
+name: 'Terraform'
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: 
+      - main 
+  push:
+    branches:
+     - feature/*
+     - main
+    paths:
+      - '*/**'
+permissions:
+  id-token: write
+  contents: read 
+env: 
+  AWS_REGION: ap-south-1
+  TF_VERSION: 1.2.6   
+
+jobs:
+  terraform:
+    name: infrastructure-staging
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-region: ${{ env.AWS_REGION }}
+        role-to-assume: arn:aws:iam::434605749312:role/aws-deployment-tf
+        role-session-name: staging-session    
+    - name: Checkout
+      uses: actions/checkout@v3
+      
+    - name: Setup terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: ${{ env.TF_VERSION }}      
+
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Format
+      run: terraform fmt -check
+
+    - name: Terraform Validate
+      run: terraform validate -no-color      
+
+    - name: Terraform Plan
+      run: terraform plan -input=false
+      
