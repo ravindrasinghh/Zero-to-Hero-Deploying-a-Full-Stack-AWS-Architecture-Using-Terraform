@@ -7,7 +7,6 @@ on:
       - master
   push:
     branches:
-     - feature/*
      - master
     paths:
       - '*/**'
