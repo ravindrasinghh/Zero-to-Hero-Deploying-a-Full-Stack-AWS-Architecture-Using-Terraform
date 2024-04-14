@@ -1,5 +1,5 @@
 # Zero-to-Hero-Deploying-a-Full-Stack-AWS-Architecture-Using-Terraform
-![ARCH](docs/arch.jpg)
+![ARCH](docs/architecture.jpg)
 ## Requirements
 
 | Name | Version |
