@@ -4,7 +4,7 @@ resource "aws_wafv2_ip_set" "block_ip_set" {
   scope              = "REGIONAL" # Use REGIONAL for ALBs
   ip_address_version = "IPV4"
   addresses = [
-    "10.0.0.0/16"
+    "106.214.95.140/32"
   ]
 
   description = "IP Set for blocking specific IP addresses"
