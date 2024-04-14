@@ -174,9 +174,9 @@ resource "aws_autoscaling_group" "app_asg" {
     version = aws_launch_template.app.latest_version
   }
 
-  min_size            = 1
+  min_size            = 2
   max_size            = 3
-  desired_capacity    = 2
+  desired_capacity    = 3
   vpc_zone_identifier = values(aws_subnet.private).*.id
   health_check_type   = "ELB"
   target_group_arns   = [aws_lb_target_group.app_tg.arn]
