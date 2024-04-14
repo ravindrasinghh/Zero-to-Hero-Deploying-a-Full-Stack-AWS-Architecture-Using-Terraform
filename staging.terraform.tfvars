@@ -1,7 +1,7 @@
 # Basic Environment Settings
 env = "staging"
 vpc_conf = {
-  cidr                 = "10.55.0.0/16"
+  cidr                 = "10.0.0.0/16"
   instance_tenancy     = "default"
   enable_dns_hostnames = true
   enable_dns_support   = true
@@ -15,12 +15,12 @@ public_subnets = {
 }
 
 private_subnets = {
-  "ap-south-1a" = "10.0.101.0/24"
-  "ap-south-1b" = "10.0.102.0/24"
+  "ap-south-1a" = "10.0.3.0/24"
+  "ap-south-1b" = "10.0.4.0/24"
 }
 
 # EC2 and AMI Configuration
-instance_type = "t3.micro"
+instance_type = "t3a.medium"
 ami_id        = "ami-09298640a92b2d12c" # Replace with a valid AMI ID for your region
 
 
@@ -39,9 +39,9 @@ alb_sg_ingress_rules = {
   }
 }
 alb_sg_egress_rules = {
-  https = {
-    from_port   = 443
-    to_port     = 443
+  all = {
+    from_port   = 0
+    to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -59,7 +59,7 @@ ec2_sg_ingress_rules = {
   }
 }
 ec2_sg_egress_rules = {
-  https = {
+  all = {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
@@ -69,7 +69,7 @@ ec2_sg_egress_rules = {
 rds_conf = {
   instance_class          = "db.t3.xlarge"
   engine                  = "mysql"
-  engine_version          = "8.0.20"
+  engine_version          = "8.0.35"
   allocated_storage       = 20
   storage_type            = "gp2"
   multi_az                = true
