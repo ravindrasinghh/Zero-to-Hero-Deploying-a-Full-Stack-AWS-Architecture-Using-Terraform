@@ -7,7 +7,6 @@ on:
       - master
   push:
     branches:
-     - feature/*
      - master
     paths:
       - '*/**'
@@ -52,5 +51,5 @@ jobs:
       run: terraform validate -no-color      
 
     - name: Terraform Plan
-      run: terraform plan -input=false
+      run: terraform plan --var-file=staging.terraform.tfvars  
       

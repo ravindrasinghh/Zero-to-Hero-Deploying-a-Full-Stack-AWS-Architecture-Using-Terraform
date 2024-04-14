@@ -24,7 +24,6 @@ variable "private_subnets" {
 variable "instance_type" {
   description = "The EC2 instance type for the Auto Scaling Group."
   type        = string
-  default     = "t3.micro"
 }
 
 variable "ami_id" {
@@ -36,21 +35,26 @@ variable "ami_id" {
 
 #alb 
 variable "alb_sg_ingress_rules" {
-  type = any
+  type    = any
+  default = {}
 }
 variable "alb_sg_egress_rules" {
-  type = any
+  type    = any
+  default = {}
 }
 #ec2
 variable "ec2_sg_ingress_rules" {
-  type = any
+  type    = any
+  default = {}
 }
 variable "ec2_sg_egress_rules" {
-  type = any
+  type    = any
+  default = {}
 }
 
 variable "rds_conf" {
-  type = any
+  type    = any
+  default = {}
 }
 
 #rds

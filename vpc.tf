@@ -12,7 +12,7 @@ resource "aws_vpc" "main" {
 resource "aws_eip" "nat" {
   for_each = var.public_subnets
 
-  vpc = true
+  vpc = tobool(true)
 }
 
 resource "aws_nat_gateway" "nat" {

@@ -49,6 +49,7 @@ resource "aws_launch_template" "app" {
   network_interfaces {
     associate_public_ip_address = false
     subnet_id                   = tolist(values(aws_subnet.private))[0].id
+    security_groups             = [aws_security_group.ec2_sg.id]
   }
 
   user_data = base64encode(data.template_file.user_data.rendered)
@@ -69,6 +70,9 @@ resource "aws_launch_template" "app" {
 
 data "template_file" "user_data" {
   template = file("templates/user_data.tpl")
+  vars = {
+    efs_file_system_id = aws_efs_file_system.app_efs.id
+  }
 }
 resource "aws_lb" "app_alb" {
   name               = "${var.env}-alb"
@@ -202,7 +206,7 @@ resource "aws_security_group" "ec2_sg" {
   vpc_id      = aws_vpc.main.id
 
   dynamic "ingress" {
-    for_each = var.alb_sg_ingress_rules
+    for_each = var.ec2_sg_ingress_rules
     content {
       description     = format("Allow access for %s", ingress.key)
       from_port       = ingress.value.from_port
@@ -213,7 +217,7 @@ resource "aws_security_group" "ec2_sg" {
     }
   }
   dynamic "egress" {
-    for_each = var.alb_sg_egress_rules
+    for_each = var.ec2_sg_egress_rules
     content {
       description     = format("Allow access for %s", egress.key)
       from_port       = egress.value.from_port

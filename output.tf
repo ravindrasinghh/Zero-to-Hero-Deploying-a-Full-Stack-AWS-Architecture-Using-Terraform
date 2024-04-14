@@ -42,3 +42,7 @@ output "db_name" {
 output "db_id" {
   value = aws_db_instance.db.id
 }
+
+output "efs_file_system_id" {
+  value = aws_efs_file_system.app_efs.id
+}
