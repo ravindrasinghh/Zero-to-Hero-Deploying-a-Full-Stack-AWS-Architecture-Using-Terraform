@@ -17,10 +17,9 @@ resource "random_password" "root_password" {
 }
 
 resource "aws_db_instance" "db" {
-  depends_on              = ["aws_db_subnet_group.rds_subnet_group"]
+  depends_on              = [aws_db_subnet_group.rds_subnet_group]
   identifier              = "${var.env}-rds"
   allocated_storage       = var.rds_conf.allocated_storage
-  license_model           = "license-included"
   storage_type            = var.rds_conf.storage_type
   engine                  = var.rds_conf.engine
   engine_version          = var.rds_conf.engine_version
