@@ -107,3 +107,7 @@ No modules.
 | <a name="output_security_group_id"></a> [security\_group\_id](#output\_security\_group\_id) | The ID of the security group attached to the ALB |
 | <a name="output_target_group_arn"></a> [target\_group\_arn](#output\_target\_group\_arn) | The ARN of the target group used with the ALB |
 | <a name="output_waf_web_acl_arn"></a> [waf\_web\_acl\_arn](#output\_waf\_web\_acl\_arn) | The ARN of the Web ACL associated with the ALB |
+
+
+
+You can find the video at [https://youtu.be/4C1Kle5MIo8](https://youtu.be/4C1Kle5MIo8) .
